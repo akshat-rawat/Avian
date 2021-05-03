@@ -1,0 +1,25 @@
+{
+  "name": "avian",
+  "version": "1.0.0",
+  "description": "Airline Reservations System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshat-rawat/Avian.git"
+  },
+  "author": "Akshat Rawat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshat-rawat/Avian/issues"
+  },
+  "homepage": "https://github.com/akshat-rawat/Avian#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
+  }
+}
