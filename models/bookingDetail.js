@@ -8,8 +8,8 @@ const bookingDetailSchema = new Schema ({
     flight: String,
     passenger : {
          type: Schema.Types.ObjectId,
-         ref: "user"
+         ref: "User"
      }
 });
 
-module.exports = mongoose.model("bookingDetail", bookingDetailSchema);
+module.exports = mongoose.model("BookingDetail", bookingDetailSchema);
