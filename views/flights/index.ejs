@@ -1,0 +1,38 @@
+<% layout("layouts/boilerplate") %>
+
+<form action="/" method="post" accept-charset="utf-8">		
+	<div>
+		<div class="center">
+			<div class="input-group input-group-lg">
+				<label for="from" class="form-control heading-label">FROM</label>
+				<label for="to" class="form-control heading-label">TO</label>
+				<label for="date" class="form-control heading-label">DEPARTURE</label>				
+				<label for="" class="form-control heading-label">TRAVELLERS</label>
+			</div>
+			<div class="input-group input-group-lg">
+				<input type="text" aria-label="from" class="form-control" value="DEL" name="from" required>
+				<input type="text" aria-label="to" class="form-control" value="MAA" name="to" required>
+				<input type="date" aria-label="date" class="form-control" value="09/05/2021" name="date" required>
+				<select class="form-control" name="passengerCount" required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="bt">
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					<input type="radio" class="btn-check" name="group" id="group1" autocomplete="off" value="Economy" checked>
+					<label class="btn btn-outline-secondary" for="group1">Economy</label>
+
+					<input type="radio" class="btn-check" name="group" id="group2" autocomplete="off" value="Premium">
+					<label class="btn btn-outline-secondary" for="group2">Premium</label>
+
+					<input type="radio" class="btn-check" name="group" id="group3" autocomplete="off" value="Business">
+					<label class="btn btn-outline-secondary" for="group3">Business</label>
+				</div>
+				<button type="submit" class="btn btn-dark btn-lg button">SEARCH</button>
+			</div>
+		</div>	
+	</div>
+</form>

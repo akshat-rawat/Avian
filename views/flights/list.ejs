@@ -1,0 +1,59 @@
+<% layout("layouts/boilerplate") %>
+
+<div>
+	<div class="card bg-transparent big-list-card">
+		<div class="card-body">
+			<h1>Bookings</h1>
+			<hr> <br>
+			
+			<form action="/list" method="post">
+				<div class="card border-dark list-card">
+					<div class="card-body">
+						<h3 class="card-title">
+							<div class="row">
+								<div class="col">
+									<%= detail.from %> -> <%= detail.to %>	
+								</div>	
+								<div class="col" style="text-align: right;">
+									<button type="submit" class="btn btn-outline-dark" style="width: 15rem;">VIEW</button>
+								</div>
+							</div>
+						</h3>
+						<h6><%= detail.date %></h6>
+						<hr>
+						<h5>
+							<div class="row">
+								<div class="col">
+									<i class="fas fa-plane-departure"></i>
+									<br>
+									<%= detail.fromTime %>	
+									<br>
+									<%= detail.from %><!--  City -->
+								</div>	
+								<div class="col">
+									<i class="fas fa-plane-arrival"></i>
+									<br>
+									<%= detail.toTime %>	
+									<br>
+									<%= detail.to %><!--  City -->
+								</div>
+								<div class="col" style="text-align: center;">
+									<br>
+									<b><%= detail.airline %></b>
+									<br>
+									<% if (detail.passengerCount > 1) { %>
+										<%= detail.group %> | <%= detail.passengerCount %> Travellers
+									<% } else { %>
+										<%= detail.group %> | <%= detail.passengerCount %> Traveller						
+									<% } %>		
+								</div>	
+								<div class="col"></div>
+							</div>							
+						</h5>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>

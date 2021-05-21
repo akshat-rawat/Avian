@@ -13,7 +13,8 @@ const bookingDetailSchema = new Schema ({
          ref: "User"
      },
      group: String,
-     passengerCount: Number
+     passengerCount: Number,
+     price: Number
 });
 
 module.exports = mongoose.model("BookingDetail", bookingDetailSchema);

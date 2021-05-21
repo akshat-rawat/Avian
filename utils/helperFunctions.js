@@ -19,20 +19,14 @@ function generateTime() {
     return [ fHours+":"+fMins, tHours+":"+tMins ];
 }
 
-function generateDetails(from, to, date, group, passengerCount) {
+function generateDetails(from, to, date, passengerCount, group) {
     let details = [];
 
     for (let index = 0; index < 7; index++) {
-        const detail = {};
-
-        detail.from = from;
-        detail.to = to;
-        detail.date = date;
-        detail.group = group;
-        detail.passengerCount = passengerCount;
+        const detail = { from, to, date, passengerCount, group };
 
         detail.airline = airlines[Math.floor(Math.random() * airlines.length)];
-
+        detail.price = Math.floor(Math.random() * 7000) + 3000;
         [ detail.fromTime, detail.toTime ] = generateTime();
 
         details.push(detail);

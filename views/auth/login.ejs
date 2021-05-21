@@ -1,8 +1,20 @@
-<% layout("layouts/boilerplate") %>
+<% layout("layouts/auth-boilerplate") %>
 
-<h1>Login</h1>
 <form action="/login" method="post">
-    <input type="email" id="username" name="username" placeholder="email" required>
-    <input type="password" id="password" name="password" placeholder="password" required>
-    <button>Login</button>
+  <div class="box">
+    <h1>Login</h1>
+
+    <div class="textbox">
+      <i class="fas fa-envelope"></i>
+      <input type="email" placeholder="Email" name="username" required>
+    </div>
+
+    <div class="textbox">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Password" name="password" required>
+    </div>
+
+    <input type="submit" class="btn" value="Sign in">
+    <p class="foot">New User? <a href="/register" title="">Sign Up</a></p>
+  </div>
 </form>
