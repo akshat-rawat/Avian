@@ -5,11 +5,15 @@ const bookingDetailSchema = new Schema ({
     from: String,
     to: String,
     date: Date,
-    flight: String,
+    airline: String,
+    fromTime: String,
+    toTime: String,
     passenger : {
          type: Schema.Types.ObjectId,
          ref: "User"
-     }
+     },
+     group: String,
+     passengerCount: Number
 });
 
 module.exports = mongoose.model("BookingDetail", bookingDetailSchema);
