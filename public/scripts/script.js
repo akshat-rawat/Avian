@@ -8,12 +8,12 @@ $.fn.followTo = function ( pos ) {
         if ($window.scrollTop() > pos) {
             $this.css({
                 position: 'absolute',
-                top: pos+200
+                top: pos+192
             });
         } else {
             $this.css({
                 position: 'fixed',
-                top: 200
+                top: 192
             });
         }
     });

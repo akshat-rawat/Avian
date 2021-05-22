@@ -16,6 +16,7 @@ module.exports.register = async (req, res, next) => {
             res.redirect("/");
         });
     } catch (e) {
+        req.flash("error", e.message);
         res.redirect("/register");
     }
 }
@@ -31,5 +32,6 @@ module.exports.login = (req, res) => {
 
 module.exports.logout = (req, res) => {
     req.logout();
+    req.flash("success", "Goodbye!");
     res.redirect("/");
 }

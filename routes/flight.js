@@ -38,6 +38,7 @@ router.post("/review", async (req, res) => {
     bookingDetail.passenger = req.user._id;
     await bookingDetail.save();
 
+    req.flash("success", "Successfully booked the flight!");
     res.redirect("/bookings");
 });
 
