@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const bookingDetailSchema = new Schema ({
     from: String,
     to: String,
-    date: Date,
+    date: String,
     airline: String,
     fromTime: String,
     toTime: String,

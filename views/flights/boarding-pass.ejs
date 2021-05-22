@@ -21,15 +21,15 @@
 			    <div class="col">
 					<br>
 					<h4 class="card-text">Passenger's Name</h4>
-					<h2 class="card-title">Akshat</b></h2>
+					<h2 class="card-title"><%= bookingDetail.passenger.name %></b></h2>
 					<br>
 					<br>
 					<h4 class="card-text">FROM</h4>
-					<h2 class="card-title"><b>DELHI</b></h2>
+					<h2 class="card-title"><b><%= bookingDetail.from %></b></h2><!-- City -->
 					<br>
 					<br>
 					<h4 class="card-text">TO</h4>
-					<h2 class="card-title"><b>CHENNAI</b></h2>
+					<h2 class="card-title"><b><%= bookingDetail.to %></b></h2><!-- City -->
 			    </div>
 			    <div class="col">
 					<br>
@@ -38,11 +38,11 @@
 					<br>
 					<br>
 					<h4 class="card-text">CARRIER</h4>
-					<h2 class="card-title"><b>INDIGO</b></h2>
+					<h2 class="card-title"><b><%= bookingDetail.airline %></b></h2>
 					<br>
 					<br>
 					<h4 class="card-text">DATE</h4>
-					<h2 class="card-title"><b>10/05/2021</b></h2>
+					<h2 class="card-title"><b><%= bookingDetail.date %></b></h2>
 			    </div>
 			    <div class="col">
 					<br>
@@ -50,7 +50,7 @@
 					<br>
 					<br>
 					<h4 class="card-text">TIME</h4>
-					<h2 class="card-title"><b>00:30</b></h2>
+					<h2 class="card-title"><b><%= bookingDetail.fromTime %></b></h2>
 			    </div>
 			  </div>
 			</div>

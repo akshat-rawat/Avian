@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const User = require("../models/user");
 
 module.exports.renderRegister = (req, res) => {
@@ -6,15 +7,16 @@ module.exports.renderRegister = (req, res) => {
 
 module.exports.register = async (req, res, next) => {
     try {
-        const { name, username, password } = req.body;
+        let { name, username, password } = req.body;
+        name = _.startCase(_.camelCase(name));
         const user = new User({ name, username });
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
             res.redirect("/");
-        })
+        });
     } catch (e) {
-        res.redirect("register");
+        res.redirect("/register");
     }
 }
 
@@ -29,5 +31,5 @@ module.exports.login = (req, res) => {
 
 module.exports.logout = (req, res) => {
     req.logout();
-    res.redirect('/');
+    res.redirect("/");
 }

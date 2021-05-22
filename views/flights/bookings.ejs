@@ -6,7 +6,15 @@
 			<h1>Bookings</h1>
 			<hr> <br>
 			
-			<form action="/list" method="post">
+			<% if (!details || details.length == 0) { %>
+				<br> <br>
+				<hr style="border-top: 3px dashed #be0000; background-color: #fff;;">
+				<h1 style="text-align: center; color: #ce1212;">No Bookings</h1>
+				<hr style="border-top: 3px dashed #be0000; background-color: #fff;;">
+			<% } %>
+
+			<% for (let detail of details) { %>
+			<form action="/boarding-pass/<%= detail._id %>" method="get">
 				<div class="card border-dark list-card">
 					<div class="card-body">
 						<h3 class="card-title">
@@ -53,6 +61,8 @@
 					</div>
 				</div>
 			</form>
+			<br>
+			<% } %>
 
 		</div>
 	</div>

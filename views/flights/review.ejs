@@ -42,11 +42,12 @@
 						<h5>Traveller : <%= detail.passengerCount %></h5>				
 					<% } %> 
 					<h5>Baggage : 15kg + 7kg</h5>
-
+					<form action="/review" method="post">
+						<input type="hidden" name="detail" value="<%= JSON.stringify(detail) %>" />
 					<div class="card-footer text-center">
-						<a href="list" class="btn btn-dark" style="width: 15rem; height: 3rem; line-height: 2rem;">CONFIRM</a>
+						<button type="submit" class="btn btn-dark" style="width: 15rem; height: 3rem; line-height: 2rem;">CONFIRM</button>
 					</div>
-
+				</form>
 				</div>
 			</div>
 		</div>
