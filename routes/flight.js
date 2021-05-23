@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
-const { generateDetails } = require("../utils/helperFunctions");
 const BookingDetail = require("../models/bookingDetail");
+
+const { generateDetails } = require("../utils/helperFunctions");
+const { isLoggedIn, validateBookingId } = require("../utils/middlewares");
 
 router.get("/", (req, res) => {
     res.render("flights/index");
@@ -31,9 +33,7 @@ router.get("/review", (req, res) => {
     res.render("flights/review", { detail });
 });
 
-router.post("/review", async (req, res) => {
-    if (!req.session.detail) return res.redirect("/search");
-
+router.post("/review", isLoggedIn, async (req, res) => {
     const bookingDetail = new BookingDetail(req.session.detail);
     bookingDetail.passenger = req.user._id;
     await bookingDetail.save();
@@ -42,20 +42,18 @@ router.post("/review", async (req, res) => {
     res.redirect("/bookings");
 });
 
-router.get("/bookings", (req, res) => {
-    if (!req.user) return res.redirect("/login");
-
+router.get("/bookings", isLoggedIn, (req, res) => {
     BookingDetail.find({ passenger: req.user._id}, function (err, details) {
-        if (err){
+        if (err) {
             console.log(err);
         }
-        else{
+        else {
             res.render("flights/bookings", { details });
         }
     });
 });
 
-router.get("/boarding-pass/:id", async (req, res) => {
+router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
     const bookingDetail = await BookingDetail.findById(req.params.id).populate("passenger");
     res.render("flights/boarding-pass", { bookingDetail });
 });
