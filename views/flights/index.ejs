@@ -1,5 +1,11 @@
 <% layout("layouts/boilerplate") %>
 
+<% 	
+	let date = new Date();
+	date.setDate(date.getDate() + 1); 
+	date = date.toLocaleDateString("en-US", {month: "2-digit",day: "2-digit",year: "numeric"}).split("/").join(".") 
+%>
+
 <form action="/" method="post">		
 	<div>
 		<div class="center">
@@ -9,10 +15,15 @@
 				<label for="date" class="form-control heading-label">DEPARTURE</label>				
 				<label for="" class="form-control heading-label">TRAVELLERS</label>
 			</div>
-			<div class="input-group input-group-lg">
-				<input type="text" aria-label="from" class="form-control" value="DEL" name="from" required>
-				<input type="text" aria-label="to" class="form-control" value="MAA" name="to" required>
-				<input type="date" aria-label="date" class="form-control" value="09/05/2021" name="date" required>
+			<div class="input-group input-group-lg" data-dropup-auto="false">
+				<input list="airports" type="text" aria-label="from" class="form-control" value="DEL" name="from" required>
+				<input list="airports" type="text" aria-label="to" class="form-control" value="MAA" name="to" required>
+				<datalist id="airports">
+					<% for (let airport of airports) { %>
+						<option value=<%= airport.IATA_code %>><%= airport.city_name %></option>
+					<% } %> 
+				</datalist>
+				<input type="text" id="datepicker" aria-label="date" class="form-control"  name="date" value="<%= date %>" onchange="vDate()" autocomplete="false" required>
 				<select class="form-control" name="passengerCount" required>
 					<option value=1>1</option>
 					<option value=2>2</option>
@@ -36,3 +47,5 @@
 		</div>	
 	</div>
 </form>
+
+<script src="/scripts/datePicker.js"></script>

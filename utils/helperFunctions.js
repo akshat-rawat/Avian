@@ -1,4 +1,8 @@
-const airlines = ["Vistara", "GoAir", "IndiGo", "SpiceJet", "Air India", "Air Asia India"]
+const airportsList = require("../utils/airportsList");
+
+
+const airlines = ["Vistara", "GoAir", "IndiGo", "SpiceJet", "Air India", "Air Asia India"],
+    airports = airportsList.airports;
 
 function generateTime() {
     let fHours = Math.floor(Math.random() * 24);
@@ -36,4 +40,11 @@ function generateDetails(from, to, date, passengerCount, group) {
 }
 
 
-module.exports = { generateDetails };
+function getCity(code) {
+    for (const airport of airports) {
+        if (code === airport.IATA_code ) return airport.city_name;  
+    }
+}
+
+
+module.exports = { generateDetails, getCity };

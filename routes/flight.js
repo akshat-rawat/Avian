@@ -1,18 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const catchAsync = require("../utils/catchAsync");
 const BookingDetail = require("../models/bookingDetail");
 
-const { generateDetails } = require("../utils/helperFunctions");
-const { isLoggedIn, validateBookingId } = require("../utils/middlewares");
+const catchAsync = require("../utils/catchAsync");
+const { generateDetails, getCity } = require("../utils/helperFunctions");
+const { isLoggedIn, validateSearchData, validateBookingId } = require("../utils/middlewares");
+const airportsList = require("../utils/airportsList");
 
 router.get("/", (req, res) => {
-    res.render("flights/index");
+    const airports = airportsList.airports
+    res.render("flights/index", { airports });
 });
 
-router.post("/", (req, res) => {
+router.post("/", validateSearchData, (req, res) => {
     const { from, to, date, passengerCount, group } = req.body;
-    req.session.details = generateDetails(from, to, date, parseInt(passengerCount), group);
+    req.session.details = generateDetails(from.toUpperCase(), to.toUpperCase(), date, parseInt(passengerCount), group);
     res.redirect("/search");
 });
 
@@ -48,14 +50,14 @@ router.get("/bookings", isLoggedIn, (req, res) => {
             console.log(err);
         }
         else {
-            res.render("flights/bookings", { details });
+            res.render("flights/bookings", { details, getCity });
         }
     });
 });
 
 router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
     const bookingDetail = await BookingDetail.findById(req.params.id).populate("passenger");
-    res.render("flights/boarding-pass", { bookingDetail });
+    res.render("flights/boarding-pass", { bookingDetail, getCity });
 });
 
 router.get("/contact", (req, res) => {
