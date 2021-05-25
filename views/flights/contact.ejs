@@ -27,6 +27,8 @@
 <body>
 	<%- include("../partials/navbar")%>
 
+	<%- include("../partials/flash") %>
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -37,7 +39,7 @@
 								<div class="contact-wrap w-100 p-md-5 p-4 py-5">
 									<h3 class="mb-4">Contact us</h3>
 									<div id="form-message-warning" class="mb-4"></div> 
-									<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+									<form action="/contact" method="post" id="contactForm" name="contactForm" class="contactForm">
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">

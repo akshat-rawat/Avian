@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
+
 const BookingDetail = require("../models/bookingDetail");
+const Contact = require("../models/contact");
 
 const catchAsync = require("../utils/catchAsync");
 const { generateDetails, getCity } = require("../utils/helperFunctions");
@@ -62,6 +64,14 @@ router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
 
 router.get("/contact", (req, res) => {
     res.render("flights/contact");
+});
+
+router.post("/contact", async (req, res) => {
+    const contact = new Contact(req.body);
+    await contact.save();
+    
+    req.flash("success", "Your message have been sent.");
+    res.redirect("/contact");
 });
 
 
