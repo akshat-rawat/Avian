@@ -2,16 +2,17 @@
 
 <% for (let passenger of bookingDetail.passengers) { %>
 	<div>
-		<div class="card text-white bg-dark booking-card">
+		<div class="card text-white bg-dark details-card">
 			<div class="card-header">
 				<div class="container">
-				<div class="row">
-					<div class="col">
-						<h1 style="font-size: 4rem; margin: 0 0 0 1rem;"><i class="fas fa-fighter-jet"></i></h1>
-					</div>
-					<div class="col"></div>
-					<div class="col">
-						<h1>Boarding Pass</h1>
+					<div class="row">
+						<div class="col">
+							<h1 style="font-size: 4rem; margin: 0 0 0 1rem;"><i class="fas fa-fighter-jet"></i></h1>
+						</div>
+						<div class="col"></div>
+						<div class="col">
+							<h1>Boarding Pass</h1>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -21,7 +22,7 @@
 						<div class="col">
 							<br>
 							<h4 class="card-text">Passenger's Name</h4>
-							<h2 class="card-title"><%= passenger %></b></h2>
+							<h2 class="card-title"><b><%= passenger %></b></h2>
 							<br>
 							<br>
 							<h4 class="card-text">FROM</h4>

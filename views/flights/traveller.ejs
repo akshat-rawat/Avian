@@ -24,13 +24,13 @@
 											<label class="btn btn-outline-secondary" for="group<%= index %>2">Ms.</label>
 										</div>
 									</div>
-									<input type="text" class="form-control" placeholder="First Name" name="fname[<%= index %>]" required>
-									<input type="text" class="form-control" placeholder="Last Name" name="lname[<%= index %>]" required>
+									<input type="text" class="form-control" placeholder="First Name" name="fname[<%= index %>]" autocomplete="false" required>
+									<input type="text" class="form-control" placeholder="Last Name" name="lname[<%= index %>]" autocomplete="false" required>
 								</div>
 							</div>
 						<% }  %>
 						<div class="text-center" style="margin-top: 3rem;">
-							<button type="submit" class="btn btn-secondary" style="width: 15rem; height: 3rem; line-height: 2rem;">CONFIRM</button>
+							<button type="submit" class="btn btn-secondary rnt-btn">CONFIRM</button>
 						</div>
 					</div>
 				</form>
@@ -47,7 +47,7 @@
 							<div class="col-8">
 								Base Fare
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹<%= detail.price - 489 %>
 							</div>
 						</div>
@@ -56,16 +56,16 @@
 							<div class="col-8">
 								Fee & Taxes
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹420
 							</div>
 						</div>
 						<hr>
 						<div class="row">
 							<div class="col-8">
-								Other Charges				
+								Other Charges
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹69
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 								Total Fare
                                 <h5 style="margin-bottom: 0;">(₹<%= detail.price %> X <%= detail.passengerCount %>)</h5>
 							</div>	
-							<div class="col" style="text-align: right;">
+							<div class="col text-right">
 								₹<%= detail.price*detail.passengerCount %>
 							</div>
 						</div>

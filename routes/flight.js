@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
+const passport = require("passport");
 
 const BookingDetail = require("../models/bookingDetail");
 const Contact = require("../models/contact");
@@ -73,8 +74,43 @@ router.get("/bookings", isLoggedIn, (req, res) => {
 });
 
 router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
-    const bookingDetail = await BookingDetail.findById(req.params.id).populate("user");
+    const bookingDetail = await BookingDetail.findById(req.params.id);
     res.render("flights/boarding-pass", { bookingDetail, getCity });
+});
+
+router.get("/cancel/:id", isLoggedIn, validateBookingId, async (req, res) => {
+    const bookingDetail = await BookingDetail.findById(req.params.id);
+    res.render("flights/cancel", { bookingDetail, getCity });
+});
+
+router.post("/cancel/:id/:value", isLoggedIn, validateBookingId, passport.authenticate("local", { failureFlash: true, failureRedirect: "/bookings" }), async (req, res) => {
+    const { id, value } = req.params;
+    const bookingDetail = await BookingDetail.findById(id);
+
+    let passengers = bookingDetail.passengers;
+    passengers.splice(value, 1);
+    
+    if (passengers.length > 0) {
+        BookingDetail.findByIdAndUpdate(id, { passengers }, function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                req.flash("success", "Your Booking has been Cancelled!");
+                res.redirect("/cancel/"+id);
+            }
+        });        
+    } else {
+        BookingDetail.findByIdAndDelete(id, function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                req.flash("success", "Your Booking has been Cancelled!");
+                res.redirect("/bookings");
+            }
+        });        
+    }
 });
 
 router.get("/contact", (req, res) => {

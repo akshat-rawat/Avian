@@ -132,6 +132,12 @@ nav {
   border-radius: 10px; 
 }
 
+.rnt-btn {
+  width: 15rem; 
+  height: 3rem; 
+  line-height: 2rem;
+}
+
 
 
 
@@ -169,7 +175,7 @@ nav {
 
 
 
-/******* List Page *******/
+/******* Bookings Page *******/
 
 
 .big-list-card {
@@ -192,13 +198,23 @@ nav {
   border-radius: 20px; 
 }
 
+.no-bookings {
+  color: #ce1212;
+  text-align: center;
+}
+
+.no-bookings hr {
+  border-top: 3px dashed #be0000; 
+  background-color: #fff;
+}
 
 
 
-/******* Booking Page *******/
+
+/******* Boarding Pass & Cancel Page *******/
 
 
-.booking-card {
+.details-card {
   margin: 4rem auto 0;
   width: 60rem;
   padding: 2rem;
@@ -207,6 +223,16 @@ nav {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.details-card button {
+  width: 15rem; 
+  height: 3rem;
+}
+
+.password-input {
+  text-align: center; 
+  background-color: #ff8585; 
+  border: none;
+}
 
 
 

@@ -13,10 +13,10 @@
 							<div class="col">
 								<%= detail.from %> - <%= detail.to %>						
 							</div>	
-							<div class="col" style="text-align: center;">
+							<div class="col text-center">
 
 							</div>
-							<div class="col" style="text-align: right;">
+							<div class="col text-right">
 								<%= detail.date %>
 							</div>	
 						</div>	
@@ -27,10 +27,10 @@
 							<div class="col">
 								<%= detail.airline %>			
 							</div>	
-							<div class="col" style="text-align: center;">
+							<div class="col text-center">
 								<%= detail.fromTime %><span class="fas fa-plane plane"></span><%= detail.toTime %>
 							</div>
-							<div class="col" style="text-align: right;">
+							<div class="col text-right">
 								<%= detail.group %>
 							</div>	
 						</div>	    
@@ -44,7 +44,7 @@
 					<h5>Baggage : 15kg + 7kg</h5>
 					<form action="/traveller" method="get">
 						<div class="card-footer text-center">
-							<button type="submit" class="btn btn-dark" style="width: 15rem; height: 3rem; line-height: 2rem;">CONTINUE</button>
+							<button type="submit" class="btn btn-dark rnt-btn">CONTINUE</button>
 						</div>
 					</form>
 				</div>
@@ -61,7 +61,7 @@
 							<div class="col-8">
 								Base Fare
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹<%= detail.price - 489 %>
 							</div>
 						</div>
@@ -70,7 +70,7 @@
 							<div class="col-8">
 								Fee & Taxes
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹420
 							</div>
 						</div>
@@ -79,7 +79,7 @@
 							<div class="col-8">
 								Other Charges		
 							</div>	
-							<div class="col-4" style="text-align: right;">
+							<div class="col-4 text-right">
 								₹69
 							</div>
 						</div>
@@ -92,7 +92,7 @@
 								Total Fare
                                 <h5 style="margin-bottom: 0;">(₹<%= detail.price %> X <%= detail.passengerCount %>)</h5>		
 							</div>	
-							<div class="col" style="text-align: right;">
+							<div class="col text-right">
 								₹<%= detail.price*detail.passengerCount %>
 							</div>
 						</div>

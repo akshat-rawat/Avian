@@ -8,61 +8,60 @@
 			
 			<% if (!details || details.length == 0) { %>
 				<br> <br>
-				<hr style="border-top: 3px dashed #be0000; background-color: #fff;">
-				<h1 style="text-align: center; color: #ce1212;">No Bookings</h1>
-				<hr style="border-top: 3px dashed #be0000; background-color: #fff;">
+				<div class="no-bookings">
+					<hr>
+						<h1>No Bookings</h1>
+					<hr>
+				</div>
 			<% } %>
 
 			<% for (let detail of details) { %>
-				<form action="/boarding-pass/<%= detail._id %>" method="get">
-					<div class="card border-dark list-card">
-						<div class="card-body">
-							<h3 class="card-title">
-								<div class="row">
-									<div class="col">
-										<%= detail.from %> -> <%= detail.to %>	
-									</div>	
-									<div class="col" style="text-align: right;">
-										<button type="submit" class="btn btn-outline-dark" style="width: 8rem;">VIEW</button>
-										<!-- <button type="submit" class="btn btn-outline-danger" style="width: 8rem;">CANCEL</button> -->
-									</div>
+				<div class="card border-dark list-card">
+					<div class="card-body">
+						<h3 class="card-title">
+							<div class="row">
+								<div class="col">
+									<%= detail.from %> -> <%= detail.to %>	
+								</div>	
+								<div class="col text-right">
+									<a href="/boarding-pass/<%= detail._id %>" class="btn btn-outline-dark" style="width: 8rem;">VIEW</a>
+									<a href="/cancel/<%= detail._id %>" class="btn btn-outline-danger" style="width: 8rem;">CANCEL</a>
 								</div>
-							</h3>
-							<h6><%= detail.date %></h6>
-							<hr>
-							<h5>
-								<div class="row">
-									<div class="col">
-										<i class="fas fa-plane-departure"></i>
-										<br>
-										<%= detail.fromTime %>	
-										<br>
-										<%= getCity(detail.from) %>
-									</div>	
-									<div class="col">
-										<i class="fas fa-plane-arrival"></i>
-										<br>
-										<%= detail.toTime %>	
-										<br>
-										<%= getCity(detail.to) %>
-									</div>
-									<div class="col-4" style="text-align: center;">
-										<br>
-										<b><%= detail.airline %></b>
-										<br>
-										<% if (detail.passengerCount > 1) { %>
-											<%= detail.group %> | <%= detail.passengerCount %> Travellers
-										<% } else { %>
-											<%= detail.group %> | <%= detail.passengerCount %> Traveller						
-										<% } %>		
-									</div>
-									<div class="col" style="text-align: right;">
-									</div>	
-								</div>							
-							</h5>
-						</div>
+							</div>
+						</h3>
+						<h6><%= detail.date %></h6>
+						<hr>
+						<h5>
+							<div class="row">
+								<div class="col">
+									<i class="fas fa-plane-departure"></i>
+									<br>
+									<%= detail.fromTime %>	
+									<br>
+									<%= getCity(detail.from) %>
+								</div>	
+								<div class="col">
+									<i class="fas fa-plane-arrival"></i>
+									<br>
+									<%= detail.toTime %>	
+									<br>
+									<%= getCity(detail.to) %>
+								</div>
+								<div class="col-4 text-center">
+									<br>
+									<b><%= detail.airline %></b>
+									<br>
+									<% if (detail.passengerCount > 1) { %>
+										<%= detail.group %> | <%= detail.passengerCount %> Travellers
+									<% } else { %>
+										<%= detail.group %> | <%= detail.passengerCount %> Traveller						
+									<% } %>		
+								</div>
+								<div class="col"></div>	
+							</div>							
+						</h5>
 					</div>
-				</form>
+				</div>
 				<br>
 			<% } %>
 

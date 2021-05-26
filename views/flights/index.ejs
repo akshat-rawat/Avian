@@ -13,11 +13,11 @@
 				<label for="from" class="form-control heading-label">FROM</label>
 				<label for="to" class="form-control heading-label">TO</label>
 				<label for="date" class="form-control heading-label">DEPARTURE</label>
-				<label for="" class="form-control heading-label">TRAVELLERS</label>
+				<label for="passengerCount" class="form-control heading-label">TRAVELLERS</label>
 			</div>
 			<div class="input-group input-group-lg" data-dropup-auto="false">
-				<input list="airports" type="text" aria-label="from" class="form-control index-input" value="DEL" name="from" required>
-				<input list="airports" type="text" aria-label="to" class="form-control index-input" value="MAA" name="to" required>
+				<input list="airports" type="text" aria-label="from" class="form-control index-input" value="DEL" name="from" autocomplete="false" required>
+				<input list="airports" type="text" aria-label="to" class="form-control index-input" value="MAA" name="to" autocomplete="false" required>
 				<datalist id="airports">
 					<% for (let airport of airports) { %>
 						<option value=<%= airport.IATA_code %>><%= airport.city_name %></option>
