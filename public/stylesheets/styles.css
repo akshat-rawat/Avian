@@ -57,7 +57,7 @@ nav {
 /******* Index Page *******/
 
 
-input {
+.index-input {
   height: 5rem;
 }
 
@@ -135,6 +135,40 @@ input {
 
 
 
+/******* Traveller Page *******/
+
+
+.traveller-card {
+  margin: 0 3rem;
+  width: 55rem;
+  padding: 1rem;
+  top: 8rem;
+  border: 1px solid black;
+  background-color: #bbbbbb; 
+  border-radius: 10px;
+}
+
+.traveller-details {
+  margin-bottom: 1rem; 
+  border: 1.5px solid;
+  border-radius: 20px;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.traveller-details hr{
+  border-top: 1.5px dashed; 
+  background-color: #cdd0cb;
+}
+
+.traveller-details input[type="text"] {
+  background-color: #fff; 
+  border: 1.5px solid #808588;
+}
+
+
+
+
 /******* List Page *******/
 
 
@@ -165,7 +199,7 @@ input {
 
 
 .booking-card {
-  margin: 2rem auto;
+  margin: 4rem auto 0;
   width: 60rem;
   padding: 2rem;
   top: 4rem;

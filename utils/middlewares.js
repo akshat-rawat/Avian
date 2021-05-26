@@ -29,9 +29,13 @@ module.exports.validateSearchData = (req, res, next) => {
         req.flash("error", "Please select a valid Airport Code.");
         return res.redirect("/");
     }
-
+ 
     // Date Validation
-    if (new Date(date).getTime() <= Date.now()) {
+    let userDate = date.split(".");
+    [ userDate[0], userDate[1] ] = [ userDate[1], userDate[0] ];
+    userDate = userDate.join(".");
+
+    if (!Date.parse(userDate) || new Date(userDate).getTime() <= Date.now()) {
         req.flash("error", "Please select a valid Date.");
         return res.redirect("/");
     }

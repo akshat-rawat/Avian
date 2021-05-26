@@ -8,12 +8,13 @@ const bookingDetailSchema = new Schema ({
     airline: String,
     fromTime: String,
     toTime: String,
-    passenger : {
+    user : {
          type: Schema.Types.ObjectId,
          ref: "User"
      },
      group: String,
      passengerCount: Number,
+     passengers: Array,
      price: Number
 });
 

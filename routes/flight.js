@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const _ = require("lodash");
 
 const BookingDetail = require("../models/bookingDetail");
 const Contact = require("../models/contact");
@@ -37,9 +38,23 @@ router.get("/review", (req, res) => {
     res.render("flights/review", { detail });
 });
 
-router.post("/review", isLoggedIn, async (req, res) => {
+router.get("/traveller", (req, res) => {
+    if (!req.session.detail) return res.redirect("/search");
+    const detail = req.session.detail
+    res.render("flights/traveller", { detail });
+});
+
+router.post("/traveller", isLoggedIn, async (req, res) => {
+    if (!req.session.detail) return res.redirect("/search");
+
+    const { passengerCount, passengers } = req.session.detail
+    for (let index = 0; index < passengerCount; index++) {
+        let userInput = req.body.group[index] + req.body.fname[index] + " " + req.body.lname[index];
+        passengers.push(_.startCase(_.camelCase(userInput)));
+    }
+
     const bookingDetail = new BookingDetail(req.session.detail);
-    bookingDetail.passenger = req.user._id;
+    bookingDetail.user = req.user._id;
     await bookingDetail.save();
 
     req.flash("success", "Successfully booked the flight!");
@@ -47,7 +62,7 @@ router.post("/review", isLoggedIn, async (req, res) => {
 });
 
 router.get("/bookings", isLoggedIn, (req, res) => {
-    BookingDetail.find({ passenger: req.user._id}, function (err, details) {
+    BookingDetail.find({ user: req.user._id}, function (err, details) {
         if (err) {
             console.log(err);
         }
@@ -58,7 +73,7 @@ router.get("/bookings", isLoggedIn, (req, res) => {
 });
 
 router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
-    const bookingDetail = await BookingDetail.findById(req.params.id).populate("passenger");
+    const bookingDetail = await BookingDetail.findById(req.params.id).populate("user");
     res.render("flights/boarding-pass", { bookingDetail, getCity });
 });
 

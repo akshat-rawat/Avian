@@ -1,0 +1,91 @@
+<% layout("layouts/boilerplate") %>
+
+<div>
+	<div class="row">
+        
+		<div class="col-8">
+			<div class="card traveller-card">
+				
+				<form action="/traveller" method="post">
+					<div class="card-body">
+						<h1 class="text-light text-center">Traveller Details</h1>
+						<hr><br>
+						<% for (let index = 0; index < detail.passengerCount; index++) { %>
+							<div class="traveller-details">
+								<h3>Traveller <%= index+1 %></h3>
+								<hr>
+								<div class="input-group mb-3" style="margin: 1.5rem 0;">
+									<div class="input-group-prepend" style="margin-right: 1rem;">
+										<div class="btn-group" role="group<%= index %>" aria-label="Basic radio toggle button group">
+											<input type="radio" class="btn-check" name="group[<%= index %>]" id="group<%= index %>1" autocomplete="off" value="Mr." checked>
+											<label class="btn btn-outline-secondary" for="group<%= index %>1">Mr.</label>
+						
+											<input type="radio" class="btn-check" name="group[<%= index %>]" id="group<%= index %>2" autocomplete="off" value="Ms.">
+											<label class="btn btn-outline-secondary" for="group<%= index %>2">Ms.</label>
+										</div>
+									</div>
+									<input type="text" class="form-control" placeholder="First Name" name="fname[<%= index %>]" required>
+									<input type="text" class="form-control" placeholder="Last Name" name="lname[<%= index %>]" required>
+								</div>
+							</div>
+						<% }  %>
+						<div class="text-center" style="margin-top: 3rem;">
+							<button type="submit" class="btn btn-secondary" style="width: 15rem; height: 3rem; line-height: 2rem;">CONFIRM</button>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card fare-card" style="top: 13rem;">
+				<div class="card-header"><h2>Fare Summary</h2></div>
+				<div class="card-body">
+					<h4>
+						<div class="row">
+							<div class="col-8">
+								Base Fare
+							</div>	
+							<div class="col-4" style="text-align: right;">
+								₹<%= detail.price - 489 %>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-8">
+								Fee & Taxes
+							</div>	
+							<div class="col-4" style="text-align: right;">
+								₹420
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-8">
+								Other Charges				
+							</div>	
+							<div class="col-4" style="text-align: right;">
+								₹69
+							</div>
+						</div>
+					</h4>
+				</div>
+				<div class="card-footer">
+					<h2>
+						<div class="row">
+							<div class="col">
+								Total Fare
+                                <h5 style="margin-bottom: 0;">(₹<%= detail.price %> X <%= detail.passengerCount %>)</h5>
+							</div>	
+							<div class="col" style="text-align: right;">
+								₹<%= detail.price*detail.passengerCount %>
+							</div>
+						</div>
+					</h2>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

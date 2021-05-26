@@ -32,6 +32,7 @@ function generateDetails(from, to, date, passengerCount, group) {
         detail.airline = airlines[Math.floor(Math.random() * airlines.length)];
         detail.price = Math.floor(Math.random() * 7000) + 3000;
         [ detail.fromTime, detail.toTime ] = generateTime();
+        detail.passengers = []
 
         details.push(detail);
     }
