@@ -3,7 +3,7 @@
 body {
   background-color: #e3e3e3;
   overflow-x: hidden !important;
-  font-family: 'Karla', sans-serif; 
+  font-family: "Karla", sans-serif; 
 }
 
 .plane {
@@ -48,7 +48,7 @@ nav {
 .logo {
   margin: 0; 
   font-size: 3rem; 
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
 }
 
 
@@ -103,7 +103,7 @@ nav {
 
 .right-card {
   margin: 0 5rem;
-  width: 45rem;
+  width: 80%;
   padding: 1rem;
   position: relative;
   top: 8rem;
@@ -118,15 +118,21 @@ nav {
 
 .review-card {
   margin: 0 3rem;
-  width: 55rem;
+  width: 100%;
   padding: 1rem;
   top: 8rem;
   border-radius: 25px;
 }
 
+
+
+
+/**** Review & Traveller Page ****/
+
+
 .fare-card {
   margin: 0 0 0 4rem;
-  width: 22rem;
+  width: 80%;
   padding: 0rem;
   top: 10rem;
   border-radius: 10px; 
@@ -145,12 +151,12 @@ nav {
 
 
 .traveller-card {
-  margin: 0 3rem;
-  width: 55rem;
+  margin: 0 2rem;
+  width: 100%;
   padding: 1rem;
   top: 8rem;
-  border: 1px solid black;
-  background-color: #bbbbbb; 
+  border: none;
+  background-color: #cccccc; 
   border-radius: 10px;
 }
 
@@ -172,6 +178,25 @@ nav {
   border: 1.5px solid #808588;
 }
 
+.contact-details {
+  margin: 5rem 0 3rem;
+  background-color: #e3e3e3;
+}
+
+.contact-details input {
+  border-radius: 20px;
+  background-color: #e3e3e3;
+  border: 1.5px solid #fff;
+}
+
+.contact-details input[type="number"]::-webkit-outer-spin-button,
+.contact-details input[type="number"]::-webkit-inner-spin-button {   
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; 
+}
+
 
 
 
@@ -180,7 +205,7 @@ nav {
 
 .big-list-card {
   margin: 0 auto;
-  width: 80rem;
+  width: 95%;
   padding: 3rem;
   top: 5rem;
   background-color: #cccccc !important;
@@ -191,7 +216,7 @@ nav {
 
 .list-card {
   margin: 0 auto;
-  width: 60rem;
+  width: 85%;
   padding: 2rem;
   top: 10rem;
   transform: translateY(-50%);
@@ -216,11 +241,11 @@ nav {
 
 .details-card {
   margin: 4rem auto 0;
-  width: 60rem;
+  width: 70%;
   padding: 2rem;
   top: 4rem;
   border-radius: 30px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .details-card button {
@@ -262,11 +287,112 @@ footer{
 }
 
 .socials a:hover i {
-  color: aqua;
+  color: #ff8585;
 }
 
 .footer-bottom{
   padding: 0 0 30px 35px;
   text-align: center;
   word-spacing: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/********** SMALL SCREEN QUERIES **********/
+
+
+@media only screen and (max-width: 600px) {
+    
+
+  /******* Index Page *******/
+
+  .center {
+    width: 99%;
+  }
+
+  .center .input-group {
+    display: inline-block;
+    align-items: center;
+  }
+
+  .center .form-control {
+    width: 100%;
+  }
+
+
+  /******* Search Page *******/
+
+  .left-card {
+    margin: 0 5rem;
+    z-index: -1;
+  }
+
+  .right-card {
+    top: 35rem;
+  }
+
+
+  /******* Review Page *******/
+
+  .review-card {
+    margin: 0 3rem;
+    width: 85%;
+    padding: 1rem;
+  }
+  
+
+  /**** Review & Traveller Page ****/
+
+  .fare-card {
+    margin: 0 4rem;
+    width: 22rem;
+  }
+
+
+  /******* Traveller Page *******/
+
+  .traveller-card {
+    margin: 0;
+  }
+  
+
+  /******* Bookings Page *******/
+
+  .list-card {
+    margin-right: 20rem;
+    width: 110%;
+    padding: 0.5rem;
+    top: 15rem;
+  }
+
+  .list-card a {
+    margin-bottom: 1rem;
+  }
+
+  /******* Boarding Pass & Cancel Page *******/
+
+  .details-card {
+    width: 95%;
+  }
+
+  .details-card button {
+    width: 100%; 
+    height: 4rem;
+  }
+
+
+  /******* FOOTER *******/
+
+  footer{
+    margin: 35rem 0 0;
+  } 
+
 }

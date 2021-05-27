@@ -2,8 +2,8 @@
 
 <div>
 	<div class="row">
-		<div class="col-4">
-			<div class="card text-white bg-dark mb-3 w-100 h-1000 left-card" style="max-width: 25rem;">
+		<div class="col-6 col-md-4">
+			<div class="card text-white bg-dark left-card" style="max-width: 25rem;">
 				<div class="card-header">Details</div>
 				<div class="card-body">
 					<h4 class="card-title"><%= details[0].from %></h4>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 
-		<div class="col-8">
+		<div class="col-12 col-md-8">
 
 			<% for (let detail of details) { %> 
 				<form action="/search" method="post">		
