@@ -66,6 +66,16 @@ app.use((req, res, next) => {
 app.use("/", flightRoutes);
 app.use("/", authRoutes);
 
+app.all('*', (req, res, next) => {
+    res.redirect("/");
+});
+
+app.use((err, req, res, next) => {
+    console.log(err.message);
+    req.flash("error", "Oh No, Something Went Wrong!");
+    res.redirect("/");
+});
+
 
 app.listen(3000, () => {
     console.log("Server live at 3000");

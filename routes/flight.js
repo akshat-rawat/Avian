@@ -12,7 +12,7 @@ const { isLoggedIn, validateSearchData, validateBookingId } = require("../utils/
 const airportsList = require("../utils/airportsList");
 
 router.get("/", (req, res) => {
-    const airports = airportsList.airports
+    const airports = airportsList.airports;
     res.render("flights/index", { airports });
 });
 
@@ -41,11 +41,11 @@ router.get("/review", (req, res) => {
 
 router.get("/traveller", (req, res) => {
     if (!req.session.detail) return res.redirect("/search");
-    const detail = req.session.detail
+    const detail = req.session.detail;
     res.render("flights/traveller", { detail });
 });
 
-router.post("/traveller", isLoggedIn, async (req, res) => {
+router.post("/traveller", isLoggedIn, catchAsync(async (req, res) => {
     if (!req.session.detail) return res.redirect("/search");
 
     const { passengerCount, passengers } = req.session.detail
@@ -60,70 +60,51 @@ router.post("/traveller", isLoggedIn, async (req, res) => {
 
     req.flash("success", "Successfully booked the flight!");
     res.redirect("/bookings");
-});
+}));
 
-router.get("/bookings", isLoggedIn, (req, res) => {
-    BookingDetail.find({ user: req.user._id}, function (err, details) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.render("flights/bookings", { details, getCity });
-        }
-    });
-});
+router.get("/bookings", isLoggedIn, catchAsync(async (req, res) => {
+    const details = await BookingDetail.find({ user: req.user._id});
+    res.render("flights/bookings", { details, getCity });
+}));
 
-router.get("/boarding-pass/:id", validateBookingId, async (req, res) => {
+router.get("/boarding-pass/:id", validateBookingId, catchAsync(async (req, res) => {
     const bookingDetail = await BookingDetail.findById(req.params.id);
     res.render("flights/boarding-pass", { bookingDetail, getCity });
-});
+}));
 
-router.get("/cancel/:id", isLoggedIn, validateBookingId, async (req, res) => {
+router.get("/cancel/:id", isLoggedIn, validateBookingId, catchAsync(async (req, res) => {
     const bookingDetail = await BookingDetail.findById(req.params.id);
     res.render("flights/cancel", { bookingDetail, getCity });
-});
+}));
 
-router.post("/cancel/:id/:value", isLoggedIn, validateBookingId, passport.authenticate("local", { failureFlash: true, failureRedirect: "/bookings" }), async (req, res) => {
+router.post("/cancel/:id/:value", isLoggedIn, validateBookingId, passport.authenticate("local", { failureFlash: true, failureRedirect: "/bookings" }), catchAsync(async (req, res) => {
     const { id, value } = req.params;
     const bookingDetail = await BookingDetail.findById(id);
 
     let passengers = bookingDetail.passengers;
     passengers.splice(value, 1);
-    
     if (passengers.length > 0) {
-        BookingDetail.findByIdAndUpdate(id, { passengers }, function (err) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                req.flash("success", "Your Booking has been Cancelled!");
-                res.redirect("/cancel/"+id);
-            }
-        });        
-    } else {
-        BookingDetail.findByIdAndDelete(id, function (err) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                req.flash("success", "Your Booking has been Cancelled!");
-                res.redirect("/bookings");
-            }
-        });        
+        await BookingDetail.findByIdAndUpdate(id, { passengers });  
+        req.flash("success", "Your Booking has been Cancelled!");
+        return res.redirect("/cancel/"+id);      
     }
-});
+    
+    await BookingDetail.findByIdAndDelete(id);
+    req.flash("success", "Your Booking has been Cancelled!");
+    res.redirect("/bookings");
+}));
 
 router.get("/contact", (req, res) => {
     res.render("flights/contact");
 });
 
-router.post("/contact", async (req, res) => {
+router.post("/contact", catchAsync(async (req, res) => {
     const contact = new Contact(req.body);
     await contact.save();
     
     req.flash("success", "Your message have been sent.");
     res.redirect("/contact");
-});
+}));
 
 
 module.exports = router;
