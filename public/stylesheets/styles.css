@@ -10,6 +10,11 @@ body {
   margin: 0 10px;
 }
 
+.progress {
+  height: 20px; 
+  width: 13rem;
+}
+
 
 
 
@@ -91,6 +96,10 @@ nav {
 /******* Search Page *******/
 
 
+.above-search {
+  margin: 7rem 0 0 35rem;
+}
+
 .left-card {
   margin: 0 3rem;
   width: 80%;
@@ -106,7 +115,7 @@ nav {
   width: 80%;
   padding: 1rem;
   position: relative;
-  top: 8rem;
+  top: 2rem;
   border-radius: 25px;  
 }
 
@@ -130,11 +139,15 @@ nav {
 /**** Review & Traveller Page ****/
 
 
+.above-fare {
+  margin: 8rem 0 0 11rem;
+}
+
 .fare-card {
   margin: 0 0 0 4rem;
   width: 80%;
   padding: 0rem;
-  top: 10rem;
+  top: 1rem;
   border-radius: 10px; 
 }
 
@@ -156,7 +169,7 @@ nav {
   padding: 1rem;
   top: 8rem;
   border: none;
-  background-color: #cccccc; 
+  background-color: #bbbbbb;
   border-radius: 10px;
 }
 
@@ -350,6 +363,10 @@ footer{
   
 
   /**** Review & Traveller Page ****/
+
+  .above-fare {
+    margin: 13rem 0 0 13rem;
+  }
 
   .fare-card {
     margin: 0 4rem;
