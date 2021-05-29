@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require("dotenv").config();
+}
+
 const express = require("express");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate"); 
@@ -6,6 +10,8 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
 
 const User = require("./models/user");
 const flightRoutes = require("./routes/flight");
@@ -31,22 +37,25 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 const sessionConfig = {
-    secret: "secret",
+    name: "sesh",
+    secret: process.env.seshSECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure: true,
         expires: Date.now() + 1000*60*60*24*7,
         maxAge: 1000*60*60*24*7
     }
 }
 app.use(session(sessionConfig));
 
+app.use(mongoSanitize());
 app.use(flash());
+app.use(helmet({ contentSecurityPolicy: false }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -66,7 +75,7 @@ app.use((req, res, next) => {
 app.use("/", flightRoutes);
 app.use("/", authRoutes);
 
-app.all('*', (req, res, next) => {
+app.all("*", (req, res, next) => {
     res.redirect("/");
 });
 
