@@ -1,18 +1,17 @@
 const airportsList = require("../utils/airportsList");
 
-
 const airlines = ["Vistara", "GoAir", "IndiGo", "SpiceJet", "Air India", "Air Asia India"],
     airports = airportsList.airports;
 
 function generateTime() {
-    let fHours = Math.floor(Math.random() * 24);
-    let durationHours = Math.floor(Math.random() * 7) + 3;
-    let tHours = fHours + durationHours;
+    let fHours = Math.floor(Math.random() * 24),
+        durationHours = Math.floor(Math.random() * 7) + 3,
+        tHours = fHours + durationHours;
     if (tHours >= 24) tHours -= 24;
 
-    let fMins = Math.floor(Math.random() * 60);
-    let durationMins = Math.floor(Math.random() * 60);
-    let tMins = fMins + durationMins;
+    let fMins = Math.floor(Math.random() * 60),
+        durationMins = Math.floor(Math.random() * 60),
+        tMins = fMins + durationMins;
     if (tMins >= 60) tMins -= 60;
 
     fHours = fHours.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping:false});

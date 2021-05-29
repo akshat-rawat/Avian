@@ -2,18 +2,19 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config();
 }
 
-const express = require("express");
-const mongoose = require("mongoose");
-const ejsMate = require("ejs-mate"); 
-const path = require("path");
-const session = require("express-session");
-const flash = require("connect-flash");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const mongoSanitize = require("express-mongo-sanitize");
-const helmet = require("helmet");
+const express = require("express"),
+    mongoose = require("mongoose"),
+    ejsMate = require("ejs-mate"),
+    path = require("path"),
+    session = require("express-session"),
+    flash = require("connect-flash"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    mongoSanitize = require("express-mongo-sanitize"),
+    helmet = require("helmet");
 
 const User = require("./models/user");
+
 const flightRoutes = require("./routes/flight");
 const authRoutes = require("./routes/auth");
 

@@ -1,22 +1,22 @@
 var windw = this;
 
-$.fn.followTo = function ( pos ) {
+$.fn.followTo = function (pos) {
     var $this = this,
         $window = $(windw);
     
     $window.scroll(function(){
         if ($window.scrollTop() > pos) {
             $this.css({
-                position: 'absolute',
+                position: "absolute",
                 top: pos+192
             });
         } else {
             $this.css({
-                position: 'fixed',
+                position: "fixed",
                 top: 192
             });
         }
     });
 };
 
-$('.left-card').followTo(800);
+$(".left-card").followTo(800);
