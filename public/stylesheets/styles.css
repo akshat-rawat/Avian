@@ -324,6 +324,25 @@ footer{
 
 @media only screen and (max-width: 600px) {
     
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  .progress {
+    display: none;
+  }
+
+
+  /******* Navbar *******/
+
+  .nav-ul i { 
+    text-align: left;
+  }
+
+  .nav-ul {
+    margin-bottom: 1.5rem;
+  }
+
 
   /******* Index Page *******/
 
@@ -344,33 +363,32 @@ footer{
   /******* Search Page *******/
 
   .left-card {
-    margin: 0 5rem;
-    z-index: -1;
+    display: none;
   }
 
   .right-card {
-    top: 35rem;
+    top: 7rem;
+    margin: auto;
   }
 
 
   /******* Review Page *******/
 
   .review-card {
-    margin: 0 3rem;
+    margin: 0 2.5rem;
     width: 85%;
     padding: 1rem;
+    text-align: left !important;
   }
   
 
   /**** Review & Traveller Page ****/
 
-  .above-fare {
-    margin: 13rem 0 0 13rem;
-  }
-
   .fare-card {
-    margin: 0 4rem;
-    width: 22rem;
+    top: 13rem;
+    left: 20%;
+    margin: 0 auto;
+    width: 170%;
   }
 
 
@@ -378,6 +396,12 @@ footer{
 
   .traveller-card {
     margin: 0;
+  }
+
+  .traveller-card input {
+    margin-top: 1rem;
+    width: 100% !important;
+    border-radius: 0px;
   }
   
 
@@ -397,6 +421,12 @@ footer{
   
   /******* Boarding Pass & Cancel Page *******/
 
+  .mq::after { 
+    content: "\a";
+    white-space: pre;
+    display: block;
+  }
+
   .details-card {
     width: 95%;
   }
@@ -405,12 +435,5 @@ footer{
     width: 100%; 
     height: 4rem;
   }
-
-
-  /******* FOOTER *******/
-
-  footer{
-    margin: 35rem 0 0;
-  } 
 
 }

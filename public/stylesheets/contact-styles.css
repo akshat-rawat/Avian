@@ -8388,3 +8388,26 @@ footer {
   word-spacing: 2px;
   color: white !important;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+    
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  img {
+    margin: 0 !important;
+  }
+
+  /******* Navbar *******/
+
+  .nav-ul i { 
+    text-align: left;
+  }
+
+  .nav-ul {
+    margin-bottom: 1.5rem;
+  }
+}
