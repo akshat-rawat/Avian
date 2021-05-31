@@ -4,7 +4,7 @@ const BookingDetail = require("../models/bookingDetail"),
     Contact = require("../models/contact");
 
 const airportsList = require("../utils/airportsList"),
-    { generateDetails, getCity } = require("../utils/helperFunctions");
+    { generateDetails, getCity, sorting } = require("../utils/helperFunctions");
 
 
 module.exports.index = (req, res) => {
@@ -20,7 +20,8 @@ module.exports.findFlights = (req, res) => {
 
 module.exports.renderSearch = (req, res) => {
     if (!req.session.details) return res.redirect("/");
-    const details = req.session.details;
+    let details = req.session.details;
+    details = sorting(details, req.query.sortby);
     res.render("flights/search", { details });
 }
 

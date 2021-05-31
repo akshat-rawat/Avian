@@ -97,7 +97,13 @@ nav {
 
 
 .above-search {
-  margin: 7rem 0 0 35rem;
+  margin: 8rem 0 0 5rem;
+  display: inline-flex;
+}
+
+.above-search .progress {
+  margin-top: 0.6rem;
+  margin-left: 23rem;
 }
 
 .left-card {
@@ -115,7 +121,7 @@ nav {
   width: 80%;
   padding: 1rem;
   position: relative;
-  top: 2rem;
+  top: 1rem;
   border-radius: 25px;  
 }
 
@@ -343,6 +349,10 @@ footer{
     margin-bottom: 1.5rem;
   }
 
+  .d-flex .btn-dark {
+    display: none;
+  }
+
 
   /******* Index Page *******/
 
@@ -367,7 +377,7 @@ footer{
   }
 
   .right-card {
-    top: 7rem;
+    top: 3rem;
     margin: auto;
   }
 

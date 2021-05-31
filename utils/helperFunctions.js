@@ -19,7 +19,9 @@ function generateTime() {
     tHours = tHours.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping:false});
     tMins = tMins.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping:false});
 
-    return [ fHours+":"+fMins, tHours+":"+tMins ];
+    let duration = durationHours*100 + durationMins;
+
+    return [ fHours+":"+fMins, tHours+":"+tMins, duration ];
 }
 
 function generateDetails(from, to, date, passengerCount, group) {
@@ -30,7 +32,7 @@ function generateDetails(from, to, date, passengerCount, group) {
 
         detail.airline = airlines[Math.floor(Math.random() * airlines.length)];
         detail.price = Math.floor(Math.random() * 7000) + 3000;
-        [ detail.fromTime, detail.toTime ] = generateTime();
+        [ detail.fromTime, detail.toTime, detail.duration ] = generateTime();
         detail.passengers = []
 
         details.push(detail);
@@ -47,4 +49,28 @@ function getCity(code) {
 }
 
 
-module.exports = { generateDetails, getCity };
+function sorting(details, sortby) {
+    if (sortby === "price") {
+        details.sort((a, b) => a.price - b.price);
+    } 
+    else if (sortby === "duration") {
+        details.sort((a, b) => a.duration - b.duration);
+    } 
+    else if (sortby === "ao") {
+        details.sort((a, b) => {
+            let fa = a.airline.toLowerCase(),
+                fb = b.airline.toLowerCase();
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+    }
+    return details
+}
+
+
+module.exports = { generateDetails, getCity, sorting };

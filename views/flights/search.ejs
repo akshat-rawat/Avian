@@ -23,10 +23,24 @@
 		</div>
 
 		<div class="col-12 col-md-8">
-
-			<div class="progress above-search">
-				<div class="progress-bar bg-dark" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Search</div>
+			
+			<div class="above-search">
+				<div class="btn-group">
+					<button type="button" class="btn btn-dark">Sort By</button>
+					<button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="/search?sortby=ao">Alphabetical Order</a></li>
+					<li><a class="dropdown-item" href="/search?sortby=duration">Duration</a></li>
+					<li><a class="dropdown-item" href="/search?sortby=price">Price</a></li>
+					</ul>
+				</div>
+				<div class="progress">
+					<div class="progress-bar bg-dark" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Search</div>
+				</div>
 			</div>
+
 			<% for (let detail of details) { %> 
 				<form action="/search" method="post">		
 					<div class="card right-card">
